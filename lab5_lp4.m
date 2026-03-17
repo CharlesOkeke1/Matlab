@@ -1,0 +1,19 @@
+%%Frequency responses for Lab 5 problem 2
+
+R = 5; % initialise resistance
+C = 1; % initialise capacitance
+G = tf(1, [R*C, 1]); % the 'tf' function creates a system transfer function
+% inputs are numerator and denominator; denominator as a vector
+
+figure; 
+f = 0:0.01:1
+gain = 1./sqrt(1 + (f.^2) * (R * C)^2)
+H = freqresp(G,f);
+H = H(:);
+figure
+plot(f, abs(H))
+
+figure
+plot(f, gain); title("Frequency response");
+
+
